@@ -2,55 +2,78 @@ function validateForm(){
 
 	function validarNombre(){
 		var nombre = document.getElementById('name').value;
+		var valNombre = document.getElementById('err-name');
+
 		if(!/^([A-ZÁÉÍÓÚ]{1}[a-zñáéíóú]{2,11})+$/.test(nombre)){
-			alert("Debe ingresar un nombre válido");
+			var nombreSpan = document.createElement('span');
+			var nombreText = document.createTextNode("Debe ingresar un nombre válido");
+			nombreSpan.appendChild(nombreText);
+			valNombre.appendChild(nombreSpan);
 		}
 	}
 	validarNombre();
 
 	function validarApellido(){
 		var apellido = document.getElementById('lastname').value;
+		var valApellido = document.getElementById('err-lastname');
+
 		if(!/^([A-ZÁÉÍÓÚ]{1}[a-zñáéíóú]{2,11})+$/.test(apellido)){
-			alert("Debe ingresar un apellido válido");
+			var apellidoSpan = document.createElement('span');
+			var apellidoText = document.createTextNode("Debe ingresar un apellido válido");
+			apellidoSpan.appendChild(apellidoText);
+			valApellido.appendChild(apellidoSpan);
 		}
 	}
 	validarApellido();
 
 	function validarCorreo(){
 		var correo = document.getElementById('input-email').value;
+		var valCorreo = document.getElementById('err-email');
+
 		if(!/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(correo)){
-			alert("Debe ingresar un email válido");		
+			var correoSpan = document.createElement('span');
+			var correoText = document.createTextNode("Debe ingresar un correo válido");
+			correoSpan.appendChild(correoText);
+			valCorreo.appendChild(correoSpan);
 		}
 	}
 	validarCorreo();
 	
 	function validarPass(){
 		var pass = document.getElementById('input-password').value;
-		if(pass.length < 6){
-			alert("La contraseña debe tener al menos 6 caracteres");	
-		}else if(pass === "123456" || pass === "098754" || pass === "password"){
-			alert("La contraseña debe ser distinta de 123456 o 098754 o password");
-		}
+		var valPass = document.getElementById('err-pass');
+
+		if(pass.length < 6 || pass === "123456" || pass === "098754" || pass === "password"){
+			var passSpan = document.createElement('span');
+			var passText = document.createTextNode("La contraseña debe tener al menos 6 caracteres. Debe ser distinta de 123456 o 098754 o password");
+			passSpan.appendChild(passText);
+			valPass.appendChild(passSpan);
+		}	
 	}
 	validarPass();
 
-	function validarSelect(){
-		var bici = document.getElementsByTagName('select');
-		if(bici[0].selectedIndex == 0){
-			alert("Debe seleccionar una opción");	
+	function validarSelector(){
+		var selector = document.getElementsByTagName('select');
+		var valSelector = document.getElementById('err-select');
+
+		if(selector[0].selectedIndex == 0){
+			var selectorSpan = document.createElement('span');
+			var selectorText = document.createTextNode("Debe seleccionar una opción");
+			selectorSpan.appendChild(selectorText);
+			valSelector.appendChild(selectorSpan);
 		}
 	}
-	validarSelect();
+	validarSelector();
 
 	clear(); //resetear campos
 }
 
 function clear(){
-	document.getElementById("name").value ="";
-	document.getElementById("lastname").value = "";
-	document.getElementById("input-email").value = "";
-	document.getElementById("input-password").value = "";
+	document.getElementById('name').value ="";
+	document.getElementById('lastname').value = "";
+	document.getElementById('input-email').value = "";
+	document.getElementById('input-password').value = "";
 	document.getElementById('select-box').selectedIndex = 0;	
-	document.getElementById("input-social").value = "";
-	document.getElementById("checkbox").checked = "";
+	document.getElementById('input-social').value = "";
+	document.getElementById('checkbox').checked = "";
 }
