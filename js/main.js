@@ -2,8 +2,7 @@ function validateForm(){
 
 	function validarNombre(){
 		var nombre = document.getElementById('name').value;
-		var valNombre = document.getElementById('err-name');
-
+		var valNombre = document.getElementsByClassName('input-box')[0];
 		if(!/^([A-ZÁÉÍÓÚ]{1}[a-zñáéíóú]{2,11})+$/.test(nombre)){
 			var nombreSpan = document.createElement('span');
 			var nombreText = document.createTextNode("Debe ingresar un nombre válido");
@@ -15,7 +14,7 @@ function validateForm(){
 
 	function validarApellido(){
 		var apellido = document.getElementById('lastname').value;
-		var valApellido = document.getElementById('err-lastname');
+		var valApellido = document.getElementsByClassName('input-box')[1];
 
 		if(!/^([A-ZÁÉÍÓÚ]{1}[a-zñáéíóú]{2,11})+$/.test(apellido)){
 			var apellidoSpan = document.createElement('span');
@@ -28,7 +27,7 @@ function validateForm(){
 
 	function validarCorreo(){
 		var correo = document.getElementById('input-email').value;
-		var valCorreo = document.getElementById('err-email');
+		var valCorreo = document.getElementsByClassName('input-box')[2];
 
 		if(!/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(correo)){
 			var correoSpan = document.createElement('span');
@@ -41,7 +40,7 @@ function validateForm(){
 	
 	function validarPass(){
 		var pass = document.getElementById('input-password').value;
-		var valPass = document.getElementById('err-pass');
+		var valPass = document.getElementsByClassName('input-box')[3];
 
 		if(pass.length < 6 || pass === "123456" || pass === "098754" || pass === "password"){
 			var passSpan = document.createElement('span');
@@ -54,7 +53,7 @@ function validateForm(){
 
 	function validarSelector(){
 		var selector = document.getElementsByTagName('select');
-		var valSelector = document.getElementById('err-select');
+		var valSelector = document.getElementsByClassName('input-box')[4];
 
 		if(selector[0].selectedIndex == 0){
 			var selectorSpan = document.createElement('span');
